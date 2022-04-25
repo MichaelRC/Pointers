@@ -7,7 +7,7 @@ type myStruct struct {
 }
 
 func (m *myStruct) printFirstName() string {
-
+	return m.FirstName
 }
 
 func main() {
@@ -18,6 +18,6 @@ func main() {
 		FirstName: "Mary",
 	}
 
-	log.Println("myVar is set to", myVar.FirstName)
-	log.Panicln("myVar2 is set to", myVar2.FirstName)
+	log.Println("myVar is set to", myVar.printFirstName())
+	log.Panicln("myVar2 is set to", myVar2.printFirstName())
 }
