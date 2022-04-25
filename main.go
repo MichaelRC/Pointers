@@ -1,6 +1,9 @@
 package main
 
-import "time"
+import (
+	"log"
+	"time"
+)
 
 type User struct {
 	FirstName   string
@@ -11,5 +14,10 @@ type User struct {
 }
 
 func main() {
+	user := User{
+		FirstName: "Mike",
+		LastName:  "C",
+	}
 
+	log.Println(user.FirstName)
 }
