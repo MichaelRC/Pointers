@@ -3,7 +3,20 @@ package main
 import "log"
 
 func main() {
-	numbers := []int{1, 2, 3, 4, 5, 6, 7}
+	type user struct {
+		FirstName string
+		LastName  string
+		Email     string
+		Age       int
+	}
 
-	log.Println(numbers[0:2])
+	var users []user
+	users = append(users, user{"John", "Smith", "john@smith.com", 30})
+	users = append(users, user{"Mary", "Jones", "mary@jones.com", 20})
+	users = append(users, user{"Sally", "Brown", "sally@brown.com", 45})
+	users = append(users, user{"Alex", "Anderson", "alex@anderson.com", 17})
+
+	for _, l := range users {
+		log.Println(l.FirstName, l.LastName, l.Email, l.Age)
+	}
 }
