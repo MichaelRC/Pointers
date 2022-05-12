@@ -1,24 +1,30 @@
 package main
 
 import (
+	"errors"
 	"log"
-
-	"github.com/MichaelRC/golangfun/helpers"
 )
 
-const numPool = 1000
+func main() {
 
-func CalculateValue(intChan chan int) {
-	randomNumber := helpers.RandomNumber(numPool)
-	intChan <- randomNumber
+	result, err := divide(100.0, 0)
+	if err != nil {
+		log.Println(err)
+		return
+	}
+
+	log.Println("result of division is", result)
+
 }
 
-func main() {
-	intChan := make(chan int)
-	defer close(intChan)
+func divide(x, y float32) (float32, error) {
+	var result float32
 
-	go CalculateValue(intChan)
+	if y == 0 {
+		return result, errors.New("cannot divide by 0")
+	}
 
-	num := <-intChan
-	log.Println(num)
+	result = x / y
+
+	return result, nil
 }
